@@ -1,0 +1,8 @@
+django
+djangorestframework 
+djangorestframework-simplejwt 
+celery 
+redis 
+requests 
+mysqlclient 
+python-dotenv
