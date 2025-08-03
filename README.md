@@ -42,35 +42,47 @@ subscription_system/
 ├── Dockerfile
 ├── docker-compose.yml
 ├── .env
-└── README.md
+README.md
 ```
+## 1. Clone the project
+```bash
+git@github.com:noshinfaria/Subscription-System.git
+```
+or
+```bash
+https://github.com/noshinfaria/Subscription-System.git
+```
+## 2. Change directory
+```bash
+cd subscription_system
+```
+## 3. Create .env file(rename env.example to .env)
 
-## Docker Setup
+## 4. Docker Setup
 - Requires Docker & Docker Compose installed.
 
-1. Create .env file(rename env.example to .env):
 
-2. Build and run the containers:
+ Build and run the containers:
 
 ```bash
 docker-compose up --build
 ```
-3. Apply migrations (inside container):
+ Apply migrations (inside container):
 
 ```bash
 docker-compose exec web python manage.py migrate
 ```
-4. Create superuser:
+ Create superuser:
 
 ```bash
 docker-compose exec web python manage.py createsuperuser
 ```
-5. Start Celery worker:
+## 5. Start Celery worker:
 
 ```bash
 docker-compose exec web celery -A subscription_system worker --loglevel=info
 ```
-6. Start Celery beat:
+## 6. Start Celery beat:
 
 ```bash
 docker-compose exec web celery -A subscription_system beat --loglevel=info
@@ -104,15 +116,6 @@ Include the token in your request headers:
 
 ```http
 Authorization: Bearer <your_jwt_token>
-```
-### 1. Subscribe to a Plan  
-**POST** `/api/subscribe/`
-
-**Request Body:**
-```json
-{
-  "plan_id": 1
-}
 ```
 ## Example Requests & Responses
 
