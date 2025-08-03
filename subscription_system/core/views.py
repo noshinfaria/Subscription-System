@@ -8,6 +8,8 @@ from .models import Plan, Subscription, ExchangeRateLog
 from .serializers import SubscriptionSerializer
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from django.shortcuts import render
+from django.contrib.auth import authenticate
+from rest_framework.authtoken.models import Token
 from django.contrib.auth.models import User
 
 class SubscribeView(APIView):
@@ -25,7 +27,8 @@ class SubscribeView(APIView):
             end_date=end_date,
             status='active'
         )
-        return Response({'message': 'Subscribed successfully'}, status=201)
+        serializer = SubscriptionSerializer(subscription)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 class SubscriptionListView(generics.ListAPIView):
     serializer_class = SubscriptionSerializer
