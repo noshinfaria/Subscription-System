@@ -90,7 +90,7 @@ docker-compose exec web celery -A subscription_system beat --loglevel=info
 
 ## Authentication
 
-This API uses **JWT** or **Token Authentication** depending on your configuration.
+This API uses **JWT Token Authentication** depending on your configuration.
 
 ---
 
