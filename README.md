@@ -101,16 +101,6 @@ docker-compose exec web celery -A subscription_system beat --loglevel=info
 
 ---
 
-## Example Request
-## Authentication
-
-This API uses **JWT** configuration.
-
-Include the token in your request headers:
-
-```http
-Authorization: Bearer <your_jwt_token>
-```
 ## Example Requests & Responses
 
 ### 1. Subscribe to a Plan
