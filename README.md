@@ -88,12 +88,6 @@ docker-compose exec web celery -A subscription_system worker --loglevel=info
 docker-compose exec web celery -A subscription_system beat --loglevel=info
 ```
 
-## Authentication
-
-This API uses **JWT Token Authentication** depending on your configuration.
-
----
-
 ## API Endpoints
 
 ### Subscription APIs
@@ -124,7 +118,7 @@ Authorization: Bearer <your_jwt_token>
 **Request:**
 ```http
 POST /api/subscribe/
-Authorization: Token yourtoken
+Authorization: Bearer <your_jwt_token>
 Content-Type: application/json
 ```
 ```json
@@ -153,7 +147,7 @@ Content-Type: application/json
 **Request:**
 ```http
 GET /api/subscriptions/
-Authorization: Token yourtoken
+Authorization: Bearer <your_jwt_token>
 ```
 ### Response:
 ```json
@@ -190,7 +184,7 @@ Authorization: Token yourtoken
 **Request:**
 ```http
 POST /api/cancel/
-Authorization: Token yourtoken
+Authorization: Bearer <your_jwt_token>
 Content-Type: application/json
 
 {
@@ -207,7 +201,7 @@ Content-Type: application/json
 **Request:**
 ```http
 GET /api/exchange-rate/?base=USD&target=BDT
-Authorization: Token yourtoken
+Authorization: Bearer <your_jwt_token>
 ```
 **Response:**
 ```json
